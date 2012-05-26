@@ -15,12 +15,6 @@ class ClusterChef(ClusterSetup):
           log.debug('run_list = %s' % self.run_list)
           log.debug('validation_key = %s' % self.validation_key)
 
-    @property
-    def pool(self):
-        if self._pool is None:
-            self._pool = threadpool.get_thread_pool(20, disable_threads=False)
-        return self._pool
-
      def run(self, nodes, master, user, user_shell, volumes):
           for node in nodes:
             log.info('Bootstrapping chef on %s' % node.alias)
